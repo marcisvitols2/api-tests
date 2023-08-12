@@ -1,0 +1,4 @@
+FROM marcisvitols/api-tests-base
+
+COPY features features
+COPY smoke_tests.sh smoke_tests.sh 
