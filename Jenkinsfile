@@ -17,6 +17,7 @@ pipeline {
             steps {
                 echo 'Building base image for api tests'
                 sh "docker build -t marcisvitols/api-tests-base:latest . -f Dockerfile.base"
+                sh "docker login -u marcisvitols -p marcis1995"
                 sh "docker push marcisvitols/api-tests-base:latest"
             }
         }
@@ -25,6 +26,7 @@ pipeline {
             steps {
                 echo 'Building runner image for api-tests'
                 sh "docker build -t marcisvitols/api-tests-runner:latest . -f Dockerfile.runner"
+                sh "docker login -u marcisvitols -p marcis1995"
                 sh "docker push marcisvitols/api-tests-runner:latest"
 
             }
