@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             steps {
-                build-docker-image("marcisvitols/api-tests-base:latest", "Dockerfile.base")
+                buildDockerImage("marcisvitols/api-tests-base:latest", "Dockerfile.base")
                 // echo 'Building base image for api tests'
                 // sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
                 // sh "docker build -t marcisvitols/api-tests-base:latest . -f Dockerfile.base"
@@ -29,7 +29,7 @@ pipeline {
 
         stage('docker-build-test-runner') {
             steps {
-                build-docker-image("marcisvitols/api-tests-runner:latest", "Dockerfile.runner")
+                buildDockerImage("marcisvitols/api-tests-runner:latest", "Dockerfile.runner")
                 // echo 'Building runner image for api-tests'
                 // sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
                 // sh "docker build -t marcisvitols/api-tests-runner:latest . -f Dockerfile.runner"
@@ -40,7 +40,7 @@ pipeline {
     }
 }
 
-def build-docker-image(String tag, String dockerfile){
+def buildDockerImage(String tag, String dockerfile){
     echo "Building ${tag} image for api-tests base ${dockerfile}"
     sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
     sh "docker build -t ${tag} . -f ${dockerfile}"
