@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers{
+        pollSCM('*/1 * * * *')
+    }
+
     stages {
         stage('docker build-test-base') {
             steps {
@@ -13,6 +17,7 @@ pipeline {
             steps {
                 echo 'Building runner image for api-tests'
                 sh "docker build -t marcisvitols/api-tests-runner . -f Dockerfile.runner"
+
             }
         }
     }
