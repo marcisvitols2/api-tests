@@ -12,11 +12,11 @@ class Environment
 
     case env_name
     when 'DEV'
-      parameters[:api_host] = "python-greetings-local:3000"
+      parameters[:api_host] = "127.0.0.1:3000"
     when 'STG'
       parameters[:api_host] = "python-greetings-stg:3000"
     when 'PRD'
-      parameters[:api_host] = "python-greetings-prd:3000"
+      parameters[:api_host] = "127.0.0.1:4000"
     else
       #   nothing
     end
